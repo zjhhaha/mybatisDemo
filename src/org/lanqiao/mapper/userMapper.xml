@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.userMapper">
+    <select id="getAllUser" resultType="org.lanqiao.bean.User">
+        select * from user
+    </select>
+    <!--根据id查询单个用户-->
+    <select id="getUserById" resultType="org.lanqiao.bean.User" parameterType="int" >
+        select * from user where id=#{id}
+    </select>
+
+    <!--name和pass是表里的字段名   #{name} #{pass}是对象里的字段名-->
+    <!--插入一个用户-->
+    <insert id="addUser" parameterType="org.lanqiao.bean.User">
+        insert into user(name,pass) values(#{name},#{pass})
+    </insert>
+
+    <!--根据id删除用户-->
+    <delete id="delUserById" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+
+    <!--根据id更新用户-->
+    <update id="updateUserById" parameterType="org.lanqiao.bean.User">
+        update user set name=#{name},pass=#{pass} where id=#{id}
+    </update>
+</mapper>
